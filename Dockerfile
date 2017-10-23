@@ -16,10 +16,24 @@ RUN apt-get install -y software-properties-common curl \
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
 # Install utils
-RUN apt-get -y install unzip git
+RUN apt-get -y install unzip git wget curl
+
+# Install g++
+RUN apt-get -y install g++
 
 # install python
 RUN apt-get install -y python
+
+# install vim
+RUN apt-get install -y vim \
+    && git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime \
+    && sh ~/.vim_runtime/install_awesome_vimrc.sh
+
+# install zsh
+RUN apt-get install -y zsh \
+    && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# install
 
 # Gradle opts
 ENV GRADLE_USER_HOME /cache

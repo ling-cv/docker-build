@@ -35,7 +35,7 @@ RUN apt-get install -y zsh \
 
 # install
 ENV ANDROID_NDK_VERSION r15c
-ENV ANDROID_NDK_URL https://dl.google.com/android/repository/android-ndk-${ADNROID_NDK_VERSION}-linux-x86_64.zip
+ENV ANDROID_NDK_URL https://dl.google.com/android/repository/android-ndk-${ANRDOID_NDK_VERSION}-linux-x86_64.zip
 ENV ANDROID_NDK_HOME /opt/android_ndk_${ANDROID_NDK_VERSION}
 
 RUN curl -sSL "${ANDROID_NDK_URL}" -o ndk_${ANDROID_NDK_VERSION}-linux.zip \

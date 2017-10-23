@@ -31,7 +31,7 @@ RUN apt-get install -y vim \
 
 # install zsh
 RUN apt-get install -y zsh \
-    && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    && RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 
 # install
 

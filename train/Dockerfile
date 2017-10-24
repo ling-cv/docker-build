@@ -61,3 +61,24 @@ RUN pip --no-cache-dir install \
 
 RUN pip --no-cache-dir install \
     http://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.0.0-cp27-none-linux_x86_64.whl
+
+ENV OPENCV_VERSION 3.2.0
+ENV OPENCV_HOME /opt/opencv
+# install opencv
+RUN  wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip -o opencv-${OPENCV_VERSION}.zip \
+    && unzip opencv-${OPENCV_VERSION}.zip \
+    && mkdir /opencv-${OPENCV_VERSION}/build \
+    && cd /opencv-${OPENCV_VERSION}/build \
+    && cmake \
+        -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+        -DWITH_CUDA=OFF \
+        -DWITH_MATLAB=OFF \
+        -DBUILD_DOCS=OFF \
+        -DBUILD_PERF_TESTS=OFF \
+        -DBUILD_TESTS=OFF \
+        -DHAVE_OPENMP=ON \
+        -DCMAKE_INSTALL_PREFIX="${OPENCV_HOME}/opencv-${OPENCV_VERSION}" \
+        -DBUILD_opencv_java=OFF \
+        .. \
+    && make install \
+    && rm opencv-${OPENCV_VERSION}.zip

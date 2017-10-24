@@ -26,13 +26,13 @@ RUN apt-get install -y software-properties-common curl \
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
 # Install utils
-RUN apt-get -y install build-essential software-properties-common unzip git wget curl man
+RUN apt-get -y install build-essential software-properties-common unzip git wget curl man cmake
 
 # Install g++
 RUN apt-get -y install g++
 
 # install python
-RUN apt-get install -y python
+RUN apt-get install -y python python-dev python-pip python-numpy python-scipy
 
 # install vim
 RUN apt-get install -y vim \

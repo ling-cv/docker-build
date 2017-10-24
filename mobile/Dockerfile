@@ -8,7 +8,7 @@ ENV ANDROID_NDK_URL https://dl.google.com/android/repository/android-ndk-${ANDRO
 ENV ANDROID_NDK_HOME /opt/android_ndk_${ANDROID_NDK_VERSION}
 
 RUN curl -sSL "${ANDROID_NDK_URL}" -o ndk_${ANDROID_NDK_VERSION}-linux.zip \
-    && unzip ndk_${ANDROID_NDK_VERSION}-linux.zip -d {ANDROID_NDK_HOME} \
+    && unzip ndk_${ANDROID_NDK_VERSION}-linux.zip -d ${ANDROID_NDK_HOME} \
       && rm -rf ndk_${ANDROID_NDK_VERSION}-linux.zip
 
 ENV PATH ${ANDROID_NDK_HOME}:${ANDROID_NDK_HOME}/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:$PATH

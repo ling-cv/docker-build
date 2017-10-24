@@ -32,18 +32,3 @@ RUN apt-get install -y vim \
 # install zsh
 RUN apt-get install -y zsh \
     && RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
-
-# install
-ENV ANDROID_NDK_VERSION r15c
-ENV ANDROID_NDK_URL https://dl.google.com/android/repository/android-ndk-${ANDROID_NDK_VERSION}-linux-x86_64.zip
-ENV ANDROID_NDK_HOME /opt/android_ndk_${ANDROID_NDK_VERSION}
-
-RUN curl -sSL "${ANDROID_NDK_URL}" -o ndk_${ANDROID_NDK_VERSION}-linux.zip \
-    && unzip ndk_${ANDROID_NDK_VERSION}-linux.zip -d {ANDROID_NDK_HOME} \
-      && rm -rf ndk_${ANDROID_NDK_VERSION}-linux.zip
-
-ENV PATH ${ANDROID_NDK_HOME}:${ANDROID_NDK_HOME}/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:$PATH
-
-# Gradle opts
-ENV GRADLE_USER_HOME /cache
-ENV GRADLE_OPTS "-Dorg.gradle.jvmargs=-Xmx4096M"

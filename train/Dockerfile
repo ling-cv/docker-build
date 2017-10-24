@@ -66,8 +66,9 @@ RUN pip --no-cache-dir install \
 ENV OPENCV_VERSION 3.2.0
 ENV OPENCV_HOME /opt/opencv
 # install opencv
-RUN  wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip -o opencv-${OPENCV_VERSION}.zip \
-    && unzip opencv-${OPENCV_VERSION}.zip \
+RUN  wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
+    && mv ${OPENCV_VERSION}.zip opencv-${OPENCV_VERSION}.zip \
+    && unzip opencv-${OPENCV_VERSION}.zip -d opencv-${OPENCV_VERSION} \
     && mkdir opencv-${OPENCV_VERSION}/build \
     && cd opencv-${OPENCV_VERSION}/build \
     && cmake \

@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libhdf5-serial-dev \
     libleveldb-dev \
     liblmdb-dev \
+    libopenblas-dev \
     libopencv-dev \
     libprotobuf-dev \
     libsnappy-dev \
@@ -60,7 +61,7 @@ RUN pip --no-cache-dir install \
     python -m ipykernel.kernelspec
 
 RUN pip --no-cache-dir install \
-    http://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.0.0-cp27-none-linux_x86_64.whl
+    http://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.12.1-cp27-none-linux_x86_64.whl
 
 ENV OPENCV_VERSION 3.2.0
 ENV OPENCV_HOME /opt/opencv

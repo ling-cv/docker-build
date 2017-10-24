@@ -17,7 +17,7 @@ ENV GRADLE_VERSION 4.2.1
 RUN curl -sSL https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip -o gradle-${GRADLE_VERSION}-bin.zip \
     && unzip gradle-${GRADLE_VERSION}-bin.zip \
     && mv gradle-${GRADLE_VERSION} ${GRADLE_HOME}/ \
-    && rm gradle-2.5-bin.zip
+    && rm gradle-${GRADLE_VERSION}-bin.zip
 
 ENV GRADLE_OPTS "-Dorg.gradle.jvmargs=-Xmx4096M"
 

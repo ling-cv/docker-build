@@ -7,6 +7,16 @@ RUN apt-get update \
     && apt-get -y install sudo \
     && useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
+ENV HOME /root
+
+# config LC_ALL
+ENV LC_ALL en_US.UTF-8
+
+RUN apt-get update \ 
+    && apt-get install -y language-pack-en \
+    && locale-gen en_US.UTF-8 \
+    && dpkg-reconfigure locales
+
 # Install Java8
 RUN apt-get install -y software-properties-common curl \
     && add-apt-repository -y ppa:openjdk-r/ppa \
@@ -16,7 +26,7 @@ RUN apt-get install -y software-properties-common curl \
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
 # Install utils
-RUN apt-get -y install unzip git wget curl
+RUN apt-get -y install build-essential software-properties-common unzip git wget curl man
 
 # Install g++
 RUN apt-get -y install g++
@@ -31,4 +41,10 @@ RUN apt-get install -y vim \
 
 # install zsh
 RUN apt-get install -y zsh \
-    && RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
+    && git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
+    && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
+    && chsh -s /bin/zsh
+
+RUN mkdir /workspace    
+WORKDIR /workspace
+CMD ["zsh"]

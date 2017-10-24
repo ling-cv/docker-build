@@ -68,8 +68,8 @@ ENV OPENCV_HOME /opt/opencv
 # install opencv
 RUN  wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip -o opencv-${OPENCV_VERSION}.zip \
     && unzip opencv-${OPENCV_VERSION}.zip \
-    && mkdir /opencv-${OPENCV_VERSION}/build \
-    && cd /opencv-${OPENCV_VERSION}/build \
+    && mkdir opencv-${OPENCV_VERSION}/build \
+    && cd opencv-${OPENCV_VERSION}/build \
     && cmake \
         -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
         -DWITH_CUDA=OFF \

@@ -32,7 +32,7 @@ RUN apt-get -y install build-essential software-properties-common unzip git wget
 RUN apt-get -y install g++
 
 # install python
-RUN apt-get install -y python python-dev python-pip python-numpy python-scipy
+RUN apt-get install -y python python-dev python-pip
 
 # install vim
 RUN apt-get install -y vim \

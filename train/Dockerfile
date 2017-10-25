@@ -36,7 +36,7 @@ ENV PATH $CAFFE_ROOT/build/tools:$PYCAFFE_ROOT:$PATH
 RUN echo "$CAFFE_ROOT/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
 
 # install tensorflow
-ENV TENSORFLOW_VERSION 1.3.1
+ENV TENSORFLOW_VERSION 0.12.1
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libfreetype6-dev \

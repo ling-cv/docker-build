@@ -36,6 +36,8 @@ ENV PATH $CAFFE_ROOT/build/tools:$PYCAFFE_ROOT:$PATH
 RUN echo "$CAFFE_ROOT/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
 
 # install tensorflow
+ENV TENSORFLOW_VERSION 1.3.1
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libfreetype6-dev \
     libpng12-dev \
@@ -61,11 +63,15 @@ RUN pip --no-cache-dir install \
     python -m ipykernel.kernelspec
 
 RUN pip --no-cache-dir install \
-    http://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.12.1-cp27-none-linux_x86_64.whl
+    http://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-${TENSORFLOW_VERSION}-cp27-none-linux_x86_64.whl
 
+# install opencv
+#
 ENV OPENCV_VERSION 3.2.0
 ENV OPENCV_HOME /opt/opencv
-# install opencv
+
+RUN apt-get install liblapacke-dev
+
 RUN  wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
     && mv ${OPENCV_VERSION}.zip opencv-${OPENCV_VERSION}.zip \
     && unzip opencv-${OPENCV_VERSION}.zip \

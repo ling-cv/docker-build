@@ -17,7 +17,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libsnappy-dev \
     protobuf-compiler \
     python-setuptools \
-    && rm -rf /var/lib/apt/lists/*
 
 ENV CAFFE_ROOT /opt/caffe
 
@@ -36,7 +35,7 @@ ENV PATH $CAFFE_ROOT/build/tools:$PYCAFFE_ROOT:$PATH
 RUN echo "$CAFFE_ROOT/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
 
 # install tensorflow
-ENV TENSORFLOW_VERSION 0.12.1
+ENV TENSORFLOW_VERSION 1.3.0
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libfreetype6-dev \
@@ -70,7 +69,7 @@ RUN pip --no-cache-dir install \
 ENV OPENCV_VERSION 3.2.0
 ENV OPENCV_HOME /opt/opencv
 
-RUN apt-get install liblapacke-dev
+RUN apt-get install -y liblapacke-dev
 
 RUN  wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
     && mv ${OPENCV_VERSION}.zip opencv-${OPENCV_VERSION}.zip \

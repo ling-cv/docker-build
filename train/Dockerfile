@@ -74,6 +74,7 @@ ENV OPENCV_HOME /opt/opencv
 RUN  wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
     && mv ${OPENCV_VERSION}.zip opencv-${OPENCV_VERSION}.zip \
     && unzip opencv-${OPENCV_VERSION}.zip \
+    && rm opencv-${OPENCV_VERSION}.zip \
     && mkdir opencv-${OPENCV_VERSION}/build \
     && cd opencv-${OPENCV_VERSION}/build \
     && mkdir ${OPENCV_HOME} \
@@ -89,5 +90,4 @@ RUN  wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
         -DCMAKE_INSTALL_PREFIX="${OPENCV_HOME}/opencv-${OPENCV_VERSION}" \
         -DBUILD_opencv_java=OFF \
         .. \
-    && make install \
-    && rm opencv-${OPENCV_VERSION}.zip
+    && make install

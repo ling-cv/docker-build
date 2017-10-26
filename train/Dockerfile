@@ -69,7 +69,7 @@ RUN pip --no-cache-dir install \
 ENV OPENCV_VERSION 3.2.0
 ENV OPENCV_HOME /opt/opencv
 
-RUN apt-get install -y liblapacke-dev
+#RUN apt-get install -y liblapacke-dev
 
 RUN  wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
     && mv ${OPENCV_VERSION}.zip opencv-${OPENCV_VERSION}.zip \
@@ -80,6 +80,7 @@ RUN  wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
     && cmake \
         -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
         -DWITH_CUDA=OFF \
+        -DWITH_LAPACK=OFF \
         -DWITH_MATLAB=OFF \
         -DBUILD_DOCS=OFF \
         -DBUILD_PERF_TESTS=OFF \

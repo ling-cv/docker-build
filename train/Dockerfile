@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libprotobuf-dev \
     libsnappy-dev \
     protobuf-compiler \
-    python-setuptools \
+    python-setuptools
 
 ENV CAFFE_ROOT /opt/caffe
 

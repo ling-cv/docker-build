@@ -5,11 +5,11 @@ MAINTAINER yanzhenlei@ling.ai
 # install ndk
 ENV ANDROID_NDK_VERSION r15c
 ENV ANDROID_NDK_URL https://dl.google.com/android/repository/android-ndk-${ANDROID_NDK_VERSION}-linux-x86_64.zip
-ENV ANDROID_NDK_HOME /opt/android_ndk_${ANDROID_NDK_VERSION}
+ENV ANDROID_NDK_HOME /opt/android-ndk-${ANDROID_NDK_VERSION}
 
 RUN curl -sSL "${ANDROID_NDK_URL}" -o ndk_${ANDROID_NDK_VERSION}-linux.zip \
     && unzip ndk_${ANDROID_NDK_VERSION}-linux.zip \
-    && mv android_ndk_${ANDROID_NDK_VERSION} ${ANDROID_NDK_HOME} \
+    && mv android-ndk-${ANDROID_NDK_VERSION} ${ANDROID_NDK_HOME} \
     && rm -rf ndk_${ANDROID_NDK_VERSION}-linux.zip
 
 # install gradle

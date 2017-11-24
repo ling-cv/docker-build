@@ -17,5 +17,7 @@ RUN apt-get update \
     && locale-gen en_US.UTF-8 \
     && dpkg-reconfigure locales
 
+RUN apt-get update && apt-get install -y libcurl4-openssl-dev libapr1-dev libaprutil1-dev libmxml-dev
+
 RUN mkdir /server
 WORKDIR /server

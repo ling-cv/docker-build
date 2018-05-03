@@ -23,7 +23,7 @@ RUN echo y | sdkmanager "build-tools;26.0.2"
 RUN yes | sdkmanager --licenses
 
 # install ndk
-ENV ANDROID_NDK_VERSION r15c
+ENV ANDROID_NDK_VERSION r11c
 ENV ANDROID_NDK_URL https://dl.google.com/android/repository/android-ndk-${ANDROID_NDK_VERSION}-linux-x86_64.zip
 ENV ANDROID_NDK_HOME /opt/android-ndk-${ANDROID_NDK_VERSION}
 
